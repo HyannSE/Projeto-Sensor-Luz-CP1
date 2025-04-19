@@ -1,0 +1,44 @@
+int ledPinVerde= 13;
+int ledPinAmarelo= 12;
+int ledPinVermelho= 8;
+int valorDaLuz= 0;
+int ldrPin= A0;
+int buzina= 7;
+
+void setup()
+{
+
+pinMode(ledPinVerde, OUTPUT);
+pinMode(ledPinAmarelo, OUTPUT);
+pinMode(ledPinVerde, OUTPUT);
+Serial.begin(9600);
+
+}
+void loop()
+{
+Serial.println (valorDaLuz);
+valorDaLuz = analogRead(ldrPin);
+  if (valorDaLuz <= 600) {
+    digitalWrite(ledPinVerde, HIGH);
+  }else{
+       digitalWrite(ledPinVerde, LOW);
+   }
+
+delay(100);
+  if (valorDaLuz > 601 && valorDaLuz <=801){
+    digitalWrite(ledPinAmarelo, HIGH);
+  } else {
+    digitalWrite(ledPinAmarelo, LOW);
+}
+
+delay(100);
+  if (valorDaLuz >802){
+    digitalWrite(ledPinVermelho, HIGH);
+    digitalWrite(buzina, HIGH);
+    delay(3000);
+    digitalWrite(buzina, LOW);
+  } else {
+    digitalWrite(ledPinVermelho, LOW);
+    digitalWrite(buzina, LOW);
+}
+}
