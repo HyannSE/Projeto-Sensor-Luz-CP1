@@ -11,7 +11,7 @@ Este projeto tem como objetivo demonstrar o uso de um sensor de luminosidade (LD
 
 - **Arthur Serrano Veloso** – RM: 561542  
 - **Hyann dos Santos Espindas** – RM: 563421  
-- **Theodoro** – RM: *[inserir RM]*  
+- **Theodoro Sievers de Barros Rocha - RM: 562036*  
 - **Leonardo Grosskopf** – RM: 562255  
 - **Walter Henrique Pereira de Toledo** – RM: 562476  
 
