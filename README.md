@@ -35,6 +35,23 @@ Utilizar um sensor LDR para medir a intensidade da luz ambiente e acionar LEDs c
 
 ---
 
+## 🔍 Visão Geral do Circuito
+
+O circuito é composto por um sensor LDR ligado a uma das entradas analógicas do Arduino (A0), que mede a intensidade de luz ambiente. A leitura é interpretada pelo código-fonte e, com base no valor:
+
+- Acende o **LED verde** se estiver escuro.
+- Acende o **LED amarelo** se houver uma iluminação média.
+- Acende o **LED vermelho** e ativa uma **buzina** se houver luz forte.
+
+### Conexões principais:
+
+- **LDR + resistor de 10kΩ** formam um divisor de tensão ligado entre 5V, GND e A0.  
+- **LEDs** estão conectados nos pinos digitais 13 (verde), 12 (amarelo) e 8 (vermelho), cada um com seu resistor.  
+- **Buzzer** conectado ao pino digital 7.  
+- Todos os componentes compartilham o mesmo GND.
+
+---
+
 ## 📦 Dependências
 
 Este projeto **não utiliza bibliotecas ou dependências externas**. Todo o código é baseado em funções nativas da linguagem Arduino (C/C++), garantindo simplicidade e fácil execução em qualquer ambiente compatível com a IDE do Arduino.
@@ -121,9 +138,6 @@ void loop() {
 ### 4. Alterar a Luminosidade
 - Clique sobre o sensor LDR no circuito.
 - Ajuste a **barra de valor da luz** para simular diferentes condições de luminosidade.
-  - Baixa luminosidade (até 600): LED verde acende.
-  - Média (601–801): LED amarelo acende.
-  - Alta (802+): LED vermelho acende e a buzina soa.
 
 ### 5. Ver o Código
 - Clique na aba **"Código"** no canto superior direito para visualizar ou editar o código do Arduino.
@@ -140,4 +154,4 @@ void loop() {
 
 ---
 
-Se quiser, posso gerar esse conteúdo em PDF ou até em slides. Quer que eu faça isso também?
+Se quiser, posso exportar esse conteúdo como PDF ou montar uma apresentação com os slides do projeto. É só pedir!
