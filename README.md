@@ -1,4 +1,3 @@
-Claro! Aqui está o README completo com um passo a passo detalhado de como reproduzir o projeto diretamente pelo link do Tinkercad:
 
 ---
 
