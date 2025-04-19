@@ -1,5 +1,4 @@
-# Projeto-Sensor-Luz-CP1
-Claro! Aqui está o README atualizado com o código do projeto no Tinkercad:
+Claro! Aqui está o README completo com um passo a passo detalhado de como reproduzir o projeto diretamente pelo link do Tinkercad:
 
 ---
 
@@ -45,8 +44,8 @@ Este projeto **não utiliza bibliotecas ou dependências externas**. Todo o cód
 
 ## 🔌 Esquema de Funcionamento
 
-- **LED Verde** acende quando a luminosidade é baixa (até 600).
-- **LED Amarelo** acende quando a luminosidade está em um nível médio (entre 601 e 801).
+- **LED Verde** acende quando a luminosidade é baixa (até 600).  
+- **LED Amarelo** acende quando a luminosidade está em um nível médio (entre 601 e 801).  
 - **LED Vermelho + Buzina** ativam quando a luminosidade é alta (acima de 802).
 
 ---
@@ -106,10 +105,40 @@ void loop() {
 
 ---
 
+## 🧪 Passo a Passo para Reproduzir o Projeto
+
+### 1. Acessar o Projeto
+- Clique no link a seguir para abrir o projeto:  
+🔗 [Acessar no Tinkercad](https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz)
+
+### 2. Fazer login no Tinkercad
+- Caso ainda não tenha uma conta, será necessário criar uma (grátis).
+- Se já tiver conta, faça login normalmente.
+
+### 3. Abrir a Simulação
+- Após o carregamento do projeto, clique no botão **"Iniciar Simulação"** no canto superior direito da tela.
+- Você verá os LEDs e a buzina funcionando de acordo com a intensidade de luz simulada no LDR.
+
+### 4. Alterar a Luminosidade
+- Clique sobre o sensor LDR no circuito.
+- Ajuste a **barra de valor da luz** para simular diferentes condições de luminosidade.
+  - Baixa luminosidade (até 600): LED verde acende.
+  - Média (601–801): LED amarelo acende.
+  - Alta (802+): LED vermelho acende e a buzina soa.
+
+### 5. Ver o Código
+- Clique na aba **"Código"** no canto superior direito para visualizar ou editar o código do Arduino.
+
+### 6. Fazer Alterações (Opcional)
+- Você pode modificar o código, os componentes, ou a lógica para personalizar o projeto.
+- Para salvar alterações, clique em **"Copiar e Tinker"**.
+
+---
+
 ## 📎 Link do Projeto no Tinkercad
 
 🔗 [Acessar Projeto no Tinkercad](https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz)
 
 ---
 
-Se desejar, posso formatar este conteúdo em PDF ou Word para facilitar a entrega. Gostaria que eu preparasse? 
+Se quiser, posso gerar esse conteúdo em PDF ou até em slides. Quer que eu faça isso também?
