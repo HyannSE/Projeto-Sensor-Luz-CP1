@@ -125,7 +125,6 @@ void loop() {
 
 ### 1. Acessar o Projeto
 - Clique no link a seguir para abrir o projeto:  
-🔗 [Acessar no Tinkercad]
 https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz?sharecode=76ckdQ39tN1CSJb88PtjC-aVBXon_fwl_4vQ5evZcE0
 
 ### 2. Fazer login no Tinkercad
