@@ -147,11 +147,3 @@ https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz
 - Para salvar alterações, clique em **"Copiar e Tinker"**.
 
 ---
-
-## 📎 Link do Projeto no Tinkercad
-
-🔗 [Acessar Projeto no Tinkercad](https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz)
-
----
-
-Se quiser, posso exportar esse conteúdo como PDF ou montar uma apresentação com os slides do projeto. É só pedir!
