@@ -28,7 +28,7 @@ delay(100);
   if (valorDaLuz > 601 && valorDaLuz <=801){
     digitalWrite(ledPinAmarelo, HIGH);
     tone(buzina, 1000); 
-    delay(1000); 
+    delay(3000); 
      noTone(buzina);
   } else {
     digitalWrite(ledPinAmarelo, LOW);
