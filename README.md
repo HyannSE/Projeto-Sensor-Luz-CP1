@@ -69,53 +69,52 @@ Este projeto **não utiliza bibliotecas ou dependências externas**. Todo o cód
 ## 💻 Código-fonte
 
 ```cpp
-int ledPinVerde = 13;
-int ledPinAmarelo = 12;
-int ledPinVermelho = 8;
-int valorDaLuz = 0;
-int ldrPin = A0;
-int buzina = 7;
+int ledPinVerde= 13;
+int ledPinAmarelo= 12;
+int ledPinVermelho= 8;
+int valorDaLuz= 0;
+int ldrPin= A0;
+int buzina= 7;
 
-void setup() {
-  pinMode(ledPinVerde, OUTPUT);
-  pinMode(ledPinAmarelo, OUTPUT);
-  pinMode(ledPinVermelho, OUTPUT);
-  pinMode(buzina, OUTPUT);
-  Serial.begin(9600);
+void setup()
+{
+
+pinMode(ledPinVerde, OUTPUT);
+pinMode(ledPinAmarelo, OUTPUT);
+pinMode(ledPinVerde, OUTPUT);
+Serial.begin(9600);
+
 }
-
-void loop() {
-  valorDaLuz = analogRead(ldrPin);
-  Serial.println(valorDaLuz);
-
-  // Luz baixa
+void loop()
+{
+Serial.println (valorDaLuz);
+valorDaLuz = analogRead(ldrPin);
   if (valorDaLuz <= 600) {
     digitalWrite(ledPinVerde, HIGH);
-  } else {
-    digitalWrite(ledPinVerde, LOW);
-  }
+  }else{
+       digitalWrite(ledPinVerde, LOW);
+   }
 
-  delay(100);
-
-  // Luz média
-  if (valorDaLuz > 601 && valorDaLuz <= 801) {
+delay(100);
+  if (valorDaLuz > 601 && valorDaLuz <=801){
     digitalWrite(ledPinAmarelo, HIGH);
+    tone(buzina, 1000); 
+    delay(1000); 
+     noTone(buzina);
   } else {
     digitalWrite(ledPinAmarelo, LOW);
-  }
+}
 
-  delay(100);
-
-  // Luz alta
-  if (valorDaLuz > 802) {
+delay(100);
+  if (valorDaLuz >802){
     digitalWrite(ledPinVermelho, HIGH);
     digitalWrite(buzina, HIGH);
-    delay(3000);
+    tone(buzina, 1000);
     digitalWrite(buzina, LOW);
   } else {
     digitalWrite(ledPinVermelho, LOW);
     digitalWrite(buzina, LOW);
-  }
+}
 }
 ```
 
