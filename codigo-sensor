@@ -27,6 +27,9 @@ valorDaLuz = analogRead(ldrPin);
 delay(100);
   if (valorDaLuz > 601 && valorDaLuz <=801){
     digitalWrite(ledPinAmarelo, HIGH);
+    tone(buzina, 1000); 
+    delay(1000); 
+     noTone(buzina);
   } else {
     digitalWrite(ledPinAmarelo, LOW);
 }
@@ -35,7 +38,7 @@ delay(100);
   if (valorDaLuz >802){
     digitalWrite(ledPinVermelho, HIGH);
     digitalWrite(buzina, HIGH);
-    delay(3000);
+    tone(buzina, 1000);
     digitalWrite(buzina, LOW);
   } else {
     digitalWrite(ledPinVermelho, LOW);
