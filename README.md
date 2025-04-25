@@ -65,7 +65,7 @@ Este projeto **não utiliza bibliotecas ou dependências externas**. Todo o cód
 
 ---
 
-## 💻 Código-fonte
+## 💻 Código-fonte Projeto Online
 
 ```cpp
 int ledPinVerde = 13;
@@ -119,6 +119,55 @@ void loop() {
   }
 }
 ```
+---
+## 💻 Código-fonte Projeto Fisico
+int ledPinVerde= 13;
+int ledPinAmarelo= 12;
+int ledPinVermelho= 8;
+int valorDaLuz= 0;
+int ldrPin= A0;
+int buzina= 7;
+
+void setup()
+{
+
+pinMode(ledPinVerde, OUTPUT);
+pinMode(ledPinAmarelo, OUTPUT);
+pinMode(ledPinVerde, OUTPUT);
+Serial.begin(9600);
+
+}
+void loop()
+{
+Serial.println (valorDaLuz);
+valorDaLuz = analogRead(ldrPin);
+  if (valorDaLuz >= 800) {
+    digitalWrite(ledPinVerde, HIGH);
+  }else{
+       digitalWrite(ledPinVerde, LOW);
+   }
+
+delay(100);
+  if (valorDaLuz < 800 && valorDaLuz >= 600){
+    digitalWrite(ledPinAmarelo, HIGH);
+    tone(buzina, 100); 
+    delay(3000); 
+     noTone(buzina);
+  } else {
+    digitalWrite(ledPinAmarelo, LOW);
+}
+
+delay(100);
+  if (valorDaLuz < 600){
+    digitalWrite(ledPinVermelho, HIGH);
+    digitalWrite(buzina, HIGH);
+    tone(buzina, 100);
+    digitalWrite(buzina, LOW);
+  } else {
+    digitalWrite(ledPinVermelho, LOW);
+    digitalWrite(buzina, LOW);
+}
+}
 
 ---
 
