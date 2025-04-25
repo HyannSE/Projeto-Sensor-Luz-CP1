@@ -1,17 +1,18 @@
 
 ---
 
-# Projeto Arduino: Sensor de Luz com LDR
 
-Este projeto tem como objetivo demonstrar o uso de um sensor de luminosidade (LDR) para acionar diferentes LEDs e uma buzina, conforme a intensidade de luz no ambiente. O sistema atua como um indicador de níveis de luminosidade, acendendo LEDs de cores diferentes e ativando uma buzina quando a luz atinge valores críticos.
+# 🌞 Projeto Arduino: Sensor de Luz com LDR
+
+Este projeto demonstra o uso de um sensor de luminosidade (LDR) para acionar diferentes LEDs e uma buzina, conforme a intensidade de luz no ambiente. O sistema atua como um indicador visual e sonoro de níveis de luminosidade.
 
 ---
 
 ## 👥 Integrantes
 
 - **Arthur Serrano Veloso** – RM: 561542  
-- **Hyann dos Santos Espindas** – RM: 563421
-- **Theodoro Sievers de Barros Rocha** - RM: 562036
+- **Hyann dos Santos Espindas** – RM: 563421  
+- **Theodoro Sievers de Barros Rocha** – RM: 562036  
 - **Leonardo Grosskopf** – RM: 562255  
 - **Walter Henrique Pereira de Toledo** – RM: 562476  
 
@@ -19,61 +20,55 @@ Este projeto tem como objetivo demonstrar o uso de um sensor de luminosidade (LD
 
 ## 🎯 Objetivo
 
-Utilizar um sensor LDR para medir a intensidade da luz ambiente e acionar LEDs com diferentes cores (verde, amarelo e vermelho), além de uma buzina, de acordo com faixas pré-definidas de luminosidade.
+Utilizar um sensor LDR para medir a intensidade da luz ambiente e acionar:
+
+- LED **verde** quando a luz está **baixa**  
+- LED **amarelo** + **buzina intermitente** quando a luz está em **nível médio**  
+- LED **vermelho** + **buzina contínua** quando a luz está **alta**
 
 ---
 
 ## 🧰 Componentes Utilizados
 
-- 1 Arduino Uno  
-- 1 Sensor LDR (Light Dependent Resistor)  
-- 3 LEDs (verde, amarelo e vermelho)  
-- 3 resistores (220Ω ou compatíveis para LEDs)  
+- Arduino Uno  
+- Sensor LDR (Light Dependent Resistor)  
+- 3 LEDs (verde, amarelo, vermelho)  
+- 3 resistores de 220Ω  
 - 1 buzina (buzzer ativo)  
-- 1 resistor de 10kΩ para o LDR  
+- 1 resistor de 10kΩ (para o LDR)  
 - Protoboard e jumpers  
-
----
-
-## 🔍 Visão Geral do Circuito
-
-O circuito é composto por um sensor LDR ligado a uma das entradas analógicas do Arduino (A0), que mede a intensidade de luz ambiente. A leitura é interpretada pelo código-fonte e, com base no valor:
-
-- **LED verde** acende quando a luminosidade é baixa.
-- **LED amarelo** acende quando a luminosidade está em um nível médio, e a **buzina** emite um som a cada 3 segundo.
-- **LED vermelho** acende quando a luminosidade é alta, e a **buzina** emite som contínuo sem interrupções.
-
-#### Conexões principais:
-- **LDR + resistor de 10kΩ** formam um divisor de tensão, conectado entre 5V, GND e A0.
-- **LEDs** conectados aos pinos digitais 13 (verde), 12 (amarelo) e 8 (vermelho), cada um com seu resistor de 220Ω.
-- **Buzzer** conectado ao pino digital 7.
-- Todos os componentes compartilham o mesmo GND.
-
----
-
-## 📦 Dependências
-
-Este projeto **não utiliza bibliotecas ou dependências externas**. Todo o código é baseado em funções nativas da linguagem Arduino (C/C++), garantindo simplicidade e fácil execução em qualquer ambiente compatível com a IDE do Arduino.
 
 ---
 
 ## 🔌 Esquema de Funcionamento
 
-- **LED Verde**: acende quando a luminosidade está baixa (até 600).
-- **LED Amarelo**: acende quando a luminosidade está em um nível médio (entre 601 e 801), e a **buzina** faz um som a cada 1 segundo.
-- **LED Vermelho + Buzina**: ativam quando a luminosidade é alta (acima de 802), e a **buzina** emite som contínuo sem parar.
+- **Luminosidade baixa (≤ 600):** LED Verde aceso  
+- **Luminosidade média (601 a 801):** LED Amarelo + buzina a cada 1 segundo  
+- **Luminosidade alta (> 802):** LED Vermelho + buzina contínua  
 
 ---
 
-## 💻 Código-fonte Projeto Online
+## 🔧 Conexões
+
+| Componente     | Pino Arduino |
+|----------------|--------------|
+| LDR + 10kΩ     | A0           |
+| LED Verde      | D13          |
+| LED Amarelo    | D12          |
+| LED Vermelho   | D8           |
+| Buzina         | D7           |
+
+---
+
+## 💻 Código-fonte (Simulação)
 
 ```cpp
 int ledPinVerde = 13;
 int ledPinAmarelo = 12;
 int ledPinVermelho = 8;
-int valorDaLuz = 0;
 int ldrPin = A0;
 int buzina = 7;
+int valorDaLuz = 0;
 
 void setup() {
   pinMode(ledPinVerde, OUTPUT);
@@ -87,7 +82,6 @@ void loop() {
   valorDaLuz = analogRead(ldrPin);
   Serial.println(valorDaLuz);
 
-  // LED Verde acende para luminosidade baixa
   if (valorDaLuz <= 600) {
     digitalWrite(ledPinVerde, HIGH);
   } else {
@@ -96,104 +90,100 @@ void loop() {
 
   delay(100);
 
-  // LED Amarelo acende e buzina toca intermitente para luminosidade média
   if (valorDaLuz > 601 && valorDaLuz <= 801) {
     digitalWrite(ledPinAmarelo, HIGH);
-    tone(buzina, 1000);  // Buzina apita a cada 1 segundo
-    delay(3000);  // Buzina toca por 1 segundo
-    noTone(buzina);  // Desliga a buzina
+    tone(buzina, 1000);
+    delay(1000);
+    noTone(buzina);
   } else {
     digitalWrite(ledPinAmarelo, LOW);
   }
 
   delay(100);
 
-  // LED Vermelho acende e buzina toca continuamente para luminosidade alta
   if (valorDaLuz > 802) {
     digitalWrite(ledPinVermelho, HIGH);
-    digitalWrite(buzina, HIGH);  // Buzina emite som contínuo
-    tone(buzina, 1000);  // Apito contínuo
+    tone(buzina, 1000);
   } else {
     digitalWrite(ledPinVermelho, LOW);
-    digitalWrite(buzina, LOW);  // Desliga a buzina
+    noTone(buzina);
   }
 }
 ```
+
 ---
-## 💻 Código-fonte Projeto Fisico
-int ledPinVerde= 13;
-int ledPinAmarelo= 12;
-int ledPinVermelho= 8;
-int valorDaLuz= 0;
-int ldrPin= A0;
-int buzina= 7;
 
-void setup()
-{
+## 🛠 Código-fonte (Projeto Físico Corrigido)
 
-pinMode(ledPinVerde, OUTPUT);
-pinMode(ledPinAmarelo, OUTPUT);
-pinMode(ledPinVerde, OUTPUT);
-Serial.begin(9600);
+```cpp
+int ledPinVerde = 13;
+int ledPinAmarelo = 12;
+int ledPinVermelho = 8;
+int buzina = 7;
+int ldrPin = A0;
+int valorDaLuz = 0;
 
+void setup() {
+  pinMode(ledPinVerde, OUTPUT);
+  pinMode(ledPinAmarelo, OUTPUT);
+  pinMode(ledPinVermelho, OUTPUT);
+  pinMode(buzina, OUTPUT);
+  Serial.begin(9600);
 }
-void loop()
-{
-Serial.println (valorDaLuz);
-valorDaLuz = analogRead(ldrPin);
-  if (valorDaLuz >= 800) {
+
+void loop() {
+  valorDaLuz = analogRead(ldrPin);
+  Serial.println(valorDaLuz);
+
+  // Luminosidade baixa
+  if (valorDaLuz <= 600) {
     digitalWrite(ledPinVerde, HIGH);
-  }else{
-       digitalWrite(ledPinVerde, LOW);
-   }
-
-delay(100);
-  if (valorDaLuz < 800 && valorDaLuz >= 600){
-    digitalWrite(ledPinAmarelo, HIGH);
-    tone(buzina, 100); 
-    delay(3000); 
-     noTone(buzina);
-  } else {
     digitalWrite(ledPinAmarelo, LOW);
-}
-
-delay(100);
-  if (valorDaLuz < 600){
-    digitalWrite(ledPinVermelho, HIGH);
-    digitalWrite(buzina, HIGH);
-    tone(buzina, 100);
-    digitalWrite(buzina, LOW);
-  } else {
     digitalWrite(ledPinVermelho, LOW);
-    digitalWrite(buzina, LOW);
+    noTone(buzina);
+  }
+  // Luminosidade média
+  else if (valorDaLuz <= 801) {
+    digitalWrite(ledPinVerde, LOW);
+    digitalWrite(ledPinAmarelo, HIGH);
+    digitalWrite(ledPinVermelho, LOW);
+    tone(buzina, 1000);
+    delay(1000);
+    noTone(buzina);
+  }
+  // Luminosidade alta
+  else {
+    digitalWrite(ledPinVerde, LOW);
+    digitalWrite(ledPinAmarelo, LOW);
+    digitalWrite(ledPinVermelho, HIGH);
+    tone(buzina, 1000);
+  }
+
+  delay(200);
 }
-}
+```
 
 ---
 
-## 🧪 Passo a Passo para Reproduzir o Projeto
+## 🧪 Como Testar no Tinkercad
 
-### 1. Acessar o Projeto
-- Clique no link a seguir para abrir o projeto:  
-https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz?sharecode=76ckdQ39tN1CSJb88PtjC-aVBXon_fwl_4vQ5evZcE0
+1. Acesse o projeto pelo link:  
+   👉 [Simular no Tinkercad](https://www.tinkercad.com/things/3n4SU7639u5-checkpoint-do-arduino-sensor-de-luz?sharecode=76ckdQ39tN1CSJb88PtjC-aVBXon_fwl_4vQ5evZcE0)
 
-### 2. Fazer login no Tinkercad
-- Caso ainda não tenha uma conta, será necessário criar uma (grátis).
-- Se já tiver conta, faça login normalmente.
+2. Faça login (ou crie uma conta gratuita).
 
-### 3. Abrir a Simulação
-- Após o carregamento do projeto, clique no botão **"Iniciar Simulação"** no canto superior direito da tela.
-- Você verá os LEDs e a buzina funcionando de acordo com a intensidade de luz simulada no LDR.
+3. Clique em **"Iniciar Simulação"**.
 
-### 4. Alterar a Luminosidade
-- Clique sobre o sensor LDR no circuito.
-- Ajuste a **barra de valor da luz** para simular diferentes condições de luminosidade.
+4. Ajuste o valor da luz no sensor LDR para testar os diferentes níveis de luminosidade.
 
-### 5. Ver o Código
-- Clique na aba **"Código"** no canto superior direito para visualizar ou editar o código do Arduino.
+5. Acompanhe os LEDs e a buzina funcionando conforme o esperado.
 
-### 6. Fazer Alterações (Opcional)
-- Você pode modificar o código, os componentes, ou a lógica para personalizar o projeto.
-- Para salvar alterações, clique em **"Copiar e Tinker"**.
+---
+
+## ✅ Observações
+
+- Projeto simples, sem bibliotecas externas.
+- Ideal para fins educacionais, aprendizado de sensores e condicionais.
+- Pode ser expandido com displays LCD, sensores adicionais ou controle via app.
 
 ---
